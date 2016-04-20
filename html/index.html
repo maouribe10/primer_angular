@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html ng-app="store">
+<head>
+	<title>primer Angular</title>
+	<link rel="icon" href="../images/favicon.ico" type="image/x-icon">
+
+	<link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+
+	<script type="text/javascript" src="../js/angular.min.js"></script>
+	<script type="text/javascript" src="../js/app.js"></script>
+	<style>
+		.bordes{
+			padding: 15px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6" ng-controller="StoreController as sto">
+				<div class="bg-primary">
+					<h1 class="bordes" align="center">MY FIRST ANGULAR APP</h1>
+				</div>
+
+				
+				
+
+				<section ng-init="tab=0">
+					<ul class="nav nav-pills">
+						<li ng-repeat="pro in sto.products"><a href ng-click="$parent.tab = $index">{{pro.name}}</a></li>
+					</ul>	
+				</section>
+
+				<div ng-repeat="pro in sto.products">
+					<div class="panel" ng-show="tab==={{$index}}">
+						<h1>{{pro.name}}</h1> 
+						<h2>${{pro.price}}</h2>
+						<p>{{pro.description}}</p>
+						<button class="btn btn-primary" ng-show="pro.puedeComprarse">Add to car</button>
+					</div>
+				</div>
+			
+			<br>
+			<section>
+				<ul class="nav nav-pills">
+					<li>Description</li>
+					<li>Specifications</li>
+					<li>Reviews</li>	
+				</ul>	
+			</section>
+			</div>
+			<div class="col-md-3"></div>
+		</div>	
+	</div>
+</body>
+</html>
