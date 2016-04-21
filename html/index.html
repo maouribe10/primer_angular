@@ -24,30 +24,29 @@
 					<h1 class="bordes" align="center">MY FIRST ANGULAR APP</h1>
 				</div>
 
-				
-				
-
-				<section ng-init="tab=0">
-					<ul class="nav nav-pills">
-						<li ng-repeat="pro in sto.products"><a href ng-click="$parent.tab = $index">{{pro.name}}</a></li>
+				<section ng-controller="TabController as panelTab">
+					<ul class="nav nav-pills" >
+						<li ng-class="{active: panelTab.isTab($index)}" ng-repeat="pro in sto.products"><a href ng-click="panelTab.setTab($index)">{{pro.name}}</a></li>
 					</ul>	
-				</section>
-
-				<div ng-repeat="pro in sto.products">
-					<div class="panel" ng-show="tab==={{$index}}">
-						<h1>{{pro.name}}</h1> 
-						<h2>${{pro.price}}</h2>
-						<p>{{pro.description}}</p>
-						<button class="btn btn-primary" ng-show="pro.puedeComprarse">Add to car</button>
+					
+				
+					<div ng-repeat="pro in sto.products">
+						<div class="panel" ng-show="panelTab.isTab($index)">
+							<h1>{{pro.name}}</h1> 
+							<h2>${{pro.price}}</h2>
+							<p>{{pro.description}}</p>
+							<button class="btn btn-primary" ng-show="pro.puedeComprarse">Add to car</button>
+							<br><br>
+						</div>
 					</div>
-				</div>
+				</section>
 			
 			<br>
 			<section>
 				<ul class="nav nav-pills">
-					<li>Description</li>
-					<li>Specifications</li>
-					<li>Reviews</li>	
+					<li><a href="#desc">Description</a></li>
+					<li><a href="#desc">Specifications</a></li>
+					<li><a href="#desc">Reviews</a></li>	
 				</ul>	
 			</section>
 			</div>
